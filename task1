@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+    stages {
+        stage('Show secret use') {
+            steps {
+                withCredentials([string(credentialsId: 'secretfile', variable: 'API')]) {
+                    // Use API secret safely here
+                    echo "Using secret safely, value is masked"
+                }
+            }
+        }
+    }
+}
